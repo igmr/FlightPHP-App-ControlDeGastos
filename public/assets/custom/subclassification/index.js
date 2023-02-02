@@ -1,5 +1,6 @@
 
 const $base_api               = getLocalStorageBaseApi();
+const $base_url            = getLocalStorageBaseUrl();
 const $url                    = `${$base_api}/subclassification`;
 const $listSubclassifications = document.querySelector('.list-subclassification');
 const $pagination             = document.querySelector('.pagination-list');
@@ -120,7 +121,7 @@ const handleClickAction = async (e)=>
     }
      if(action == 'edit')
     {
-        redirect(`/subclassification/store/${id}`);
+        redirect(`${$base_url}/subclassification/store/${id}`);
     }
     /**/
 }

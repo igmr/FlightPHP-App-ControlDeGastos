@@ -2,12 +2,13 @@
 
 class ViewSubclassificationController 
 {
-    private $urlApi, $base_url, $home;
+    private $urlApi, $urlBase, $base_url, $home;
     public function __construct()
     {
+        $this->urlBase  = Flight::get('flight.base_url');
         $this->base_url = 'https://ivangabino.com';
-        $this->urlApi = $this->base_url . '/apis/Lumen-Api-REST-ControlDeGastos/api';
-        $this->home = '/subclassification';
+        $this->urlApi   = $this->base_url . '/apis/Lumen-Api-REST-ControlDeGastos/api';
+        $this->home     = $this->urlBase  . '/subclassification';
     }
     //* -----------------------------------------------------------------------
     //* Methods Http

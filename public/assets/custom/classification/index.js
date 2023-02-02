@@ -1,5 +1,6 @@
 
 const $base_api            = getLocalStorageBaseApi();
+const $base_url            = getLocalStorageBaseUrl();
 const $url                 = `${$base_api}/classification`;
 const $listClassifications = document.querySelector('.list-classification');
 const $pagination          = document.querySelector('.pagination-list');
@@ -35,35 +36,30 @@ const getIdInListClassification =  (e)=>
 {
     try 
     {
-        const {tagName, href} = e.target;
-        let aHref = 0;
-        let action = '';
-        let a = null;
-        if(tagName === 'A')
+        let i = 1, id = -999;
+        let tag = e.target
+        let href = null;
+        let action =  '';
+        do
         {
-            a = e.target;
-            aHref = href;
-        }
-        if(tagName === 'svg')
-        {
-            a = e.target.parentNode;
-            aHref = a.href;
-        }
-        if(tagName === 'path')
-        {
-            a = e.target.parentNode.parentNode;
-            aHref = a.href;
-        }
-        const aHrefArray = aHref.split('/');
-        const id = aHrefArray[aHrefArray.length-1];
-        if(a.classList.contains('edit'))
-        {
-            action = 'edit';
-        }
-        if(a.classList.contains('remove'))
-        {
-            action = 'remove';
-        }
+            if(tag.tagName === "A")
+            {
+                if(tag.classList.contains('edit'))
+                {
+                    action = 'edit';
+                }
+                if(tag.classList.contains('remove'))
+                {
+                    action = 'remove';
+                }
+                href = tag.href;
+                i = 100;
+            }
+            tag = tag.parentNode;
+            i ++;
+        }while(i < 50)
+        const aHref = href.split('/');
+        id = aHref[aHref.length-1];
         return {id, action};
     }catch($ex)
     {
@@ -98,7 +94,8 @@ const handleClickAction = async (e)=>
     }
     if(action == 'edit')
     {
-        redirect(`/classification/store/${id}`);
+        //console.log(`${$base_url}/classification/store/${id}`);
+        redirect(`${$base_url}/classification/store/${id}`);
     }
 }
 

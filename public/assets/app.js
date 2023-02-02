@@ -99,7 +99,7 @@ const redirect = (url = '/')=>
 
 document.addEventListener('DOMContentLoaded', () => {
     setLocalStorageBaseApi(`https://ivangabino.com/apis/Lumen-Api-REST-ControlDeGastos/api`);
-    setLocalStorageBaseUrl('http://localhost:8080');
+    setLocalStorageBaseUrl('https://ivangabino.com/app/control-de-gastos');
     setLocalStorageId();
     handleButtonBurgers();
 });

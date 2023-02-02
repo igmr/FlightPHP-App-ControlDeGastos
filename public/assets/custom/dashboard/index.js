@@ -1,5 +1,6 @@
 
 const $base_api      = getLocalStorageBaseApi();
+const $base_url            = getLocalStorageBaseUrl();
 const $url           = `${$base_api}/operation`;
 const $listDashboard = document.querySelector('.list-dashboard');
 const $pagination    = document.querySelector('.pagination-list');
@@ -161,7 +162,7 @@ const handleClickAction = (e)=>
 {
     e.preventDefault();
     const id = getId(e);
-    redirect(`/dashboard/store/${id}`);
+    redirect(`${$base_url}/dashboard/store/${id}`);
     return;
 }
 const getId = (e)=>
