@@ -7,7 +7,7 @@ class ViewClassificationController
     {
         $this->urlBase  = Flight::get('flight.base_url');
         $this->base_url = 'https://ivangabino.com';
-        $this->urlApi   = $this->base_url . '/apis/Lumen-Api-REST-ControlDeGastos/api';
+        $this->urlApi   = $this->base_url . '/data/apis/Lumen-Api-REST-ControlDeGastos/api';
         $this->home     = $this->urlBase  . '/classification';
     }
 
